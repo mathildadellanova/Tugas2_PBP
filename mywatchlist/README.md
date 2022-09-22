@@ -1,9 +1,22 @@
 Nama: Mathilda Dellanova
 NPM: 2106751240
-Link: 
+Link: tugas2pbpmathilda.herokuapp.com
 
 Jelaskan perbedaan antara JSON, XML, dan HTML!
 JSON = JavaScript Object Notation
+JSONadalah merupakan sebuah format yang digunakan untuk menyimpan, membaca, 
+serta menukar informasi dari web server sehingga dapat dibaca oleh para pengguna.
+
+XML = Extensible Markup Language
+XML adalah bahasa markup untuk keperluan umum yang disarankan oleh W3C untuk
+membuat dokumen markup keperluan pertukaran data antar sistem yang beraneka 
+ragam. XML merupakan kelanjutan dari HTML yang merupakan bahasa standar untuk 
+melacak Internet.
+
+HTML = Hyper Text Markup Language
+HTML adalah suatu bahasa yang menggunakan tanda-tanda tertentu (tag) untuk 
+menyatakan kode-kode yang harus ditafsirkan oleh browser agar halaman tersebut 
+dapat ditampilkan secara benar.
 
 Jelaskan mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform!
 Kita memerlukan data delivery dalam mengimplementasikan sebuah platform karena
