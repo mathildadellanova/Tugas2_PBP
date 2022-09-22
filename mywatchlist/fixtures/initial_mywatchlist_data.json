@@ -1,0 +1,112 @@
+[
+    {
+      "model": "mywatchlist.mywatchlist",
+      "pk": 1,
+      "fields": {
+        "watched": true,
+        "title": "The Grand Budapest Hotel",
+        "rating": 4,
+        "release_date": "2014-03-06",
+        "review": "An utter delight of a film that I continue to revisit on a regular basis. It might  actually be Wes Anderson's best movie, which is saying quite a lot."
+      }
+    },
+    {
+      "model": "mywatchlist.mywatchlist",
+      "pk": 2,
+      "fields": {
+        "watched": true,
+        "title": "Interstellar",
+        "rating": 4,
+        "release_date": "2014-11-06",
+        "review": "Upon my rewatch I realized that this movie is a masterpiece. Christopher Nolan is a genius."
+      }
+    },
+    {
+      "model": "mywatchlist.mywatchlist",
+      "pk": 3,
+      "fields": {
+        "watched": true,
+        "title": "La La Land",
+        "rating": 4,
+        "release_date": "2016-12-09",
+        "review": "I literally have not and will not ever see a movie better than this, we really do not deserve movies this good."
+      }
+    },
+    {
+      "model": "mywatchlist.mywatchlist",
+      "pk": 4,
+      "fields": {
+        "watched": true,
+        "title": "Knives Out",
+        "rating": 4,
+        "release_date": "2019-11-27",
+        "review": "Wildly entertaining and seriously hilarious. The best popcorn movie of the year. Trully impressive. I had way too much fun to find any real issues with this."
+      }
+    },
+    {
+      "model": "mywatchlist.mywatchlist",
+      "pk": 5,
+      "fields": {
+        "watched": false,
+        "title": "Everything Everywhere All at Once",
+        "rating": 4,
+        "release_date": "2022-06-22",
+        "review": "This is one of the best things I have ever seen in my piece of shit life. A rocks just made me cry."
+      }
+    },
+    {
+      "model": "mywatchlist.mywatchlist",
+      "pk": 6,
+      "fields": {
+        "watched": true,
+        "title": "Thor: Love and Thunder",
+        "rating": 3,
+        "release_date": "2022-07-06",
+        "review": "The best and most visually interesting part of the movie was the different fonts they used for the credit."
+      }
+    },
+    {
+      "model": "mywatchlist.mywatchlist",
+      "pk": 7,
+      "fields": {
+        "watched": true,
+        "title": "Whiplash",
+        "rating": 4,
+        "release_date": "2014-10-10",
+        "review": "My mind exploded watching this movie. My heart is still pounding. My body is still shivering."
+      }
+    },
+    {
+      "model": "mywatchlist.mywatchlist",
+      "pk": 8,
+      "fields": {
+        "watched": false,
+        "title": "The Batman",
+        "rating": 4,
+        "release_date": "2022-03-02",
+        "review": "After sleeping on this, I can confirm this movie freaking bangs. It is one of those movies where the more you think about it, the better it is."
+      }
+    },
+    {
+      "model": "mywatchlist.mywatchlist",
+      "pk": 9,
+      "fields": {
+        "watched": false,
+        "title": "Fight Club",
+        "rating": 4,
+        "release_date": "1999-11-11",
+        "review": "Had to sound like a teen cinephile but this movie is breathtaking. Love everything about this movie."
+      }
+    },
+    {
+      "model": "mywatchlist.mywatchlist",
+      "pk": 10,
+      "fields": {
+        "watched": true,
+        "title": "Parasite",
+        "rating": 4,
+        "release_date": "2019-06-21",
+        "review": "Screaming, crying, this is the best movie that has ever happened, the film that truly made me a cinephile is the first foreign film to ever win best picture."
+      }
+    }
+  ]

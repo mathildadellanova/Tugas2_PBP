@@ -1,0 +1,66 @@
+{% extends 'base.html' %} {% block content %}
+<div
+  style="
+    color: rgb(0, 0, 0);
+    text-align: center;
+    position: fixed;
+    top: 300px;
+    left: 570px;
+    font-family: Georgia, serif;
+    font-size: xx-large;
+  "
+  >
+  <a style="text-decoration: none; color: inherit"
+    ><b>Choose format</b></a
+  >
+</div>
+<div
+  style="
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+  "
+>
+  <div
+    style="
+      background-color: #f1e2ca;
+      border-radius: 35px;
+      color: rgb(0, 0, 0);
+      padding: 30px;
+      margin: 20px 20px 20px 20px;
+      font-family: Georgia, serif;
+    "
+  >
+    <a href="{{html_url}}" style="text-decoration: none; color: inherit"
+      ><b>HTML</b></a
+    >
+  </div>
+  <div
+    style="
+      background-color: #dda797;
+      border-radius: 35px;
+      color: rgb(0, 0, 0);
+      padding: 30px;
+      margin: 20px 20px 20px 20px;
+      font-family: Georgia, serif;
+    "
+  >
+    <a href="{{json_url}}" style="text-decoration: none; color: inherit"
+      ><b>JSON</b></a
+    >
+  </div>
+  <div
+    style="
+      background-color: #e9746a;
+      border-radius: 35px;
+      color: rgb(0, 0, 0);
+      padding: 30px;
+      margin: 20px 20px 20px 20px;
+      font-family: Georgia, serif;
+    "
+  >
+    <a href="{{xml_url}}" style="text-decoration: none; color: inherit"><b>XML</b></a>
+  </div>
+</div>
+{% endblock content %}

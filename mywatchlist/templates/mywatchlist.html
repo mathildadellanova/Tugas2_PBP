@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Tugas 3 PBP</h1>
+
+<h5>Nama:</h5>
+<p>{{ nama }}</p>
+
+<h5>NPM:</h5>
+<p>{{ npm }}</p>
+
+
+<table>
+  <tr style="background-color: #f1e2ca;font-family: Georgia, serif;">
+    <th>Watched</th>
+    <th>Title</th>
+    <th>Rating</th>
+    <th>Release Date</th>
+    <th>Review</th>
+  </tr>
+  {% for movie in watchlist %}
+      {% if movie.watched  %}
+        <td style="text-align: center;">✓</td>
+      {% else %}
+        <td style="text-align: center;">𝗫</td>
+      {% endif %}
+      <td>{{movie.title}}</td>
+      <td>{{movie.rating}}</td>
+      <td>{{movie.release_date}}</td>
+      <td>{{movie.review}}</td>
+      </tr>
+  {% endfor %}
+</table>
+
+{% endblock content %}
