@@ -3,8 +3,8 @@ from django.urls import reverse
 
 # Create your tests here.
 class MyWatchListResponseTest(TestCase):
-    def setUp(self):
-        self.client = Client()
+    # def setUp(self):
+    #     self.client = Client()
 
     def test_url_html_exists(self):
         response = self.client.get(reverse("mywatchlist:show_watchlist_html"))
