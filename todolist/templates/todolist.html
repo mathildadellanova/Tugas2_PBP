@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Task List</title>
+{% endblock meta %}
+
+{% block content %}
+<style>
+    .gradient-custom {
+        background: linear-gradient(to right, #ea8d8d, #a890fe)
+    }
+
+    .card:hover {
+        transform: scale(1.1);
+    }
+
+    .card {
+        border-radius: 25px;
+        transition: transform .3s;
+        background-color: white;
+        color: black;
+    }
+
+    .title {
+        font-family: Arial;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .fullscreen {
+        height: 100vh;
+    }
+
+    .navigation {
+        font-family: Arial;
+        font-weight: bold;
+        text-align: center;
+        color: black;
+    }
+</style>
+<body class="fullscreen gradient-custom">
+    <div class="my-3 mx-5 h-100">
+        <div>
+            <ul class="navigation">
+                <h1>Hi {{ username }}! 👋</h1>
+                <a class="btn btn-outline-success btn-lg btn-sm"
+                    href="{% url 'todolist:create task' %}">Create Task</a>
+                <a class="btn btn-outline-danger btn-lg btn-sm"
+                    href="{% url 'todolist:logout' %}">Logout</a>
+            </ul>
+            <tbody>
+                {% for task in task_list %}
+                <div class="col-sm mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ task.title }}</h5>
+                            <p class="card-text ">{{ task.description }}</p>
+                            <div class="row row-cols-2">
+                                {% if task.is_finished %}
+                                <p class="fw-bold text-success">Selesai</p>
+                                {% else %}
+                                <p class="fw-bold text-warning">Belum Selesai</p>
+                                {% endif %}
+                                <p class="card-text text-black text-end">{{ task.date }}</p>
+                            </div>
+                            <div class="row g-2">
+                                <a class="btn btn-outline-success btn-lg px-5 btn-sm"
+                                href="{% url 'todolist:update'  task.pk %}">Update</a>
+                                <a class="btn btn-outline-danger btn-lg px-5 btn-sm"
+                                href="{% url 'todolist:delete'  task.pk %}">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </tbody>
+        </div>
+    </div>
+</body>
+
+{% endblock content %}
