@@ -7,24 +7,28 @@
 {% block content %}
 
 <style>
-    .gradient-custom {
-
-        background: #6a11cb;
-        background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
-        background: linear-gradient(to right, rgba(106, 17, 203, 1), rgb(33, 111, 247))
+    .gradient {
+        background: linear-gradient(to right, #d8b5ff, #1eae98)
     }
 
     .card {
         border-radius: 1rem;
     }
+
+    .fullscreen {
+        height: 100vh;
+    }
+
 </style>
 
-<section class="vh-100 gradient-custom">
-    <form method="POST">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Submit">
-    </form>
+<section class="fullscreen gradient">
+    <div class="container py-5 h-100">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 </section>
 
 {% endblock content %}
