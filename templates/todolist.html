@@ -5,38 +5,69 @@
 {% endblock meta %}
 
 {% block content %}
-<div>
-    <h1>Task List</h1>
-    <ul class="navigation">
-        <li><a href="{% url 'todolist:create task' %}">Create Task</a></li>
-        <li>Logged as {{ username }}</li>
-        <li><a href="{% url 'todolist:logout' %}">Logout</a></li>
-    </ul>
-    <table>
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Created at</th>
-                <th>Status</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for task in task_list %}
+<style>
+    .gradient-custom {
+
+        background: #6a11cb;
+        background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+        background: linear-gradient(to right, rgba(106, 17, 203, 1), rgb(33, 111, 247))
+    }
+
+    .card:hover {
+        transform: scale(1.1);
+    }
+
+    .card {
+        border-radius: 25px;
+        transition: transform .5s;
+    }
+</style>
+<body class="gradient-custom">
+    <div>
+        <h1>Task List</h1>
+        <ul class="navigation">
+            <li><a href="{% url 'todolist:create task' %}">Create Task</a></li>
+            <li>Logged as {{ username }}</li>
+            <li><a href="{% url 'todolist:logout' %}">Logout</a></li>
+        </ul>
+        <table>
+            <thead>
                 <tr>
-                    <td>{{ task.title }}</td>
-                    <td>{{ task.description }}</td>
-                    <td>{{ task.date }}</td>
-                    {% if task.is_finished  %}
-                        <th><a href="update/{{task.pk}}">udah</a></th>
-                    {% else %}
-                        <th><a href="update/{{task.pk}}">belom</a></th>
-                    {% endif %}
-                    <th><a href="delete/{{task.pk}}">Delete Task</a></th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Created at</th>
+                    <th>Status</th>
+                    <th>Actions</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
+            </thead>
+            <tbody>
+                {% for task in task_list %}
+                <div class="col-sm">
+                    <div class="card bg-dark text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ task.title }}</h5>
+                            <p class="card-text ">{{ task.description }}</p>
+                            <div class="row row-cols-2">
+                                {% if task.is_finished %}
+                                <p class="fw-bold text-success font-monospace ">Finished</p>
+                                {% else %}
+                                <p class="fw-bold text-warning font-monospace">Not Finished</p>
+                                {% endif %}
+                                <p class="card-text text-info font-monospace text-end">{{ task.date }}</p>
+                            </div>
+                            <div class="row g-2">
+                                <a class="btn btn-outline-light btn-lg px-5 btn-sm"
+                                href="{% url 'todolist:update'  task.pk %}">Update</a>
+                                <a class="btn btn-outline-danger btn-lg px-5 btn-sm"
+                                href="{% url 'todolist:delete'  task.pk %}">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+
 {% endblock content %}
