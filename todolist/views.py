@@ -11,7 +11,7 @@ from django.urls import reverse
 from todolist.forms import TaskForm
 from todolist.models import Task
 from django.core import serializers
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.views.decorators.http import require_POST
 
 # Create your views here.
@@ -70,9 +70,20 @@ def create_task(request):
     return render(request, 'create-task.html', context)
 
 @login_required(login_url='/todolist/login')
-def get_task_list(request):
+def get_json(request):
     task_list = Task.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize("json", task_list), content_type="application/json")
+
+def add_task(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        user = request.user
+        date = datetime.datetime.now()
+        is_finished = False
+        item = Task(title=title, description=description, user=user, date=date, is_finished=is_finished)
+        item.save()
+        return HttpResponse({"Message": "Task Success"},status=200)
 
 @login_required(login_url='/todolist/login')
 @require_POST
@@ -87,8 +98,6 @@ def update(request, id):
 
     return HttpResponseRedirect(reverse("todolist:index"))
 
-@login_required(login_url='/todolist/login')
-@require_POST
 def delete(request, id):
     task = Task.objects.filter(user = request.user).get(pk = id)
 

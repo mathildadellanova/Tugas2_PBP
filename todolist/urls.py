@@ -12,5 +12,6 @@ urlpatterns = [
     path('create-task', views.create_task, name='create task'),
     path('update/<int:id>', update, name = 'update'),
     path('delete/<int:id>', delete, name = 'delete'),
-    path('json', views.get_task_list, name="get task list"),
+    path('json/', views.get_json, name="get task list"),
+    path("add/", views.add_task, name="add_task"),
 ]
