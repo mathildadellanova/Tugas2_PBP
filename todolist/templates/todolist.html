@@ -79,3 +79,85 @@
 </body>
 
 {% endblock content %}
+
+{% block script %}
+<script>
+  $(document).ready(() => {
+    console.log("Init");
+    $("#addTaskForm").submit(false);
+    fetchAndRenderTasklist();
+  })
+
+  function openAddTaskModal() {
+    console.log("Open Add Task Model");
+  }
+
+  function submitAddTaskForm() {
+    const actionUrl="/todolist/add"
+    console.log("SUbmit");
+    const form = $("#addTaskForm");
+    $.ajax({
+        type: "POST",
+        url: actionUrl,
+        data: form.serialize(),
+    }).done(function (data) {
+        form.trigger("reset");
+        fetchAndRenderTasklist();
+    });
+    $("#addTaskModal").modal("hide");
+  }
+  function deleteTask(id) {
+    console.log("DELETE")
+    $.ajax({
+      type: "POST",
+      url: "/todolist/delete/" + id,
+      data: {csrfmiddlewaretoken: '{{ csrf_token }}'}
+    }).done((data) => {
+      fetchAndRenderTasklist();
+    })
+  }
+  
+  function toggleTaskStatus(id) {
+    console.log("TOGGLE STATUS");
+    $.ajax({
+      type: "POST",
+      url: "/todolist/toggle",
+      data: {csrfmiddlewaretoken: '{{ csrf_token }}', pk: id}
+    }).done((data) => {
+      fetchAndRenderTasklist();
+    })
+  }
+  function fetchAndRenderTasklist() {
+    $.ajax({
+      type: "GET",
+      url: "/todolist/json"
+    }).done((data) => {
+      console.log(data);
+      renderTasklist(data);
+    });
+  }
+  function renderTasklist(taskList) {
+    console.log("RENDER");
+    const taskListContainer = $('#task-list');
+    taskListContainer.empty();
+    taskList.forEach(task => {
+      const taskCard = `
+        <div class="col">
+          <div class="card task-card">
+            <div class="card-body">
+              <h5 class="card-title">${task.fields.title}</h5>
+              <p class="card-text-small">${task.fields.date} | ${ task.fields.is_finished ? "Completed" : "Not Completed"}</p>
+              <p class="card-text">${ task.fields.description }</p>
+              <div class="d-flex gap-1">
+                <input type="submit" value="${task.fields.is_finished ? "Undone" : "Done"}" class="btn btn-secondary" onclick="toggleTaskStatus(${task.pk})" />
+                <input type="submit" value="Delete"  class="btn btn-danger" onclick="deleteTask(${ task.pk })" />
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      taskListContainer.append(taskCard);
+    });
+  }
+</script>
+{% endblock script %}
